@@ -10,23 +10,10 @@
 </p>
  
 <h2>Comments</h2>
-<% @task.comments.each do |comment| %>
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %>
+<%= render @task.comments %>
  
 <h2>Add a comment:</h2>
-<%= form_with(model: [ @task, @task.comments.build ], local: true) do |form| %>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<%= render 'comments/form' %>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
